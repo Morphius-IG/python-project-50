@@ -1,4 +1,5 @@
 import argparse
+import json
 
 def main():
     parser = argparse.ArgumentParser(
@@ -8,7 +9,16 @@ def main():
     parser.add_argument('first_file')
     parser.add_argument('second_file')
     parser.add_argument('-f', '--format', help='set format of output', metavar='FORMAT')
-    parser.print_help()
+    first_file = json.load(open('gendiff/files/file1.json'))
+    second_file = json.load(open('gendiff/files/file2.json'))
+    args = parser.parse_args() 
+    #parser.print_help()
+
+
+
+# …
+
+
 
 
 if __name__ == "__main__":
