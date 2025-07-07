@@ -15,3 +15,9 @@ packages = ["gendiff"]
 
 [project.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.11.8",
+    "pytest>=8.0.0"
+]
