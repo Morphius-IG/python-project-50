@@ -1,7 +1,7 @@
 [project]
 name = "hexlet-code"
 version = "0.1.0"
-description = "Project fot search differencies between two JSON files"
+description = "Project fot search differencies between two JSON files0"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
