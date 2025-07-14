@@ -13,4 +13,4 @@ lint: # Проверка проекта линтером
 lint_fix: # Исправление ошибок линтером
 	uv run ruff check --fix gendiff
 test-coverage: # Проверка проекта линтером
-	pytest --cov=gendiff
+	.venv/bin/pytest --cov=gendiff
