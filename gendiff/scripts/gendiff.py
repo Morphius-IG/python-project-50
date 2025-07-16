@@ -1,11 +1,8 @@
 import argparse
-import json
+from gendiff.scripts.parser import parse_files
 
 
-def parse_files(file_path1, file_path2):
-    return json.load(open(file_path1)), json.load(open(file_path2))
-
-
+PATH_FOLD = 'gendiff/files/'
 def generate_diff(data1, data2):
     keys = sorted(set(data1.keys()) | set(data2.keys()))
     diff = {}
@@ -20,10 +17,10 @@ def generate_diff(data1, data2):
             diff[f"+ {key}"] = data2[key]
         else:
             diff[key] = data1[key]
-    result = ''
+    lines = []
     for key, value in diff.items():
-        result += f'\n{key}: {value}'
-    return result
+        lines.append(f"{key}: {value}")
+    return '\n'.join(lines)
     
 
 def main():
@@ -38,7 +35,8 @@ def main():
                         metavar='FORMAT')
     args = parser.parse_args() 
 
-    file1_data, file2_data = parse_files(args.first_file, args.second_file)
+
+    file1_data, file2_data = parse_files(PATH_FOLD + args.first_file, PATH_FOLD + args.second_file)
     diff = generate_diff(file1_data, file2_data)
     return diff
 
