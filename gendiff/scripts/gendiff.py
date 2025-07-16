@@ -1,8 +1,10 @@
 import argparse
+
 from gendiff.scripts.parser import parse_files
 
-
 PATH_FOLD = 'gendiff/files/'
+
+
 def generate_diff(data1, data2):
     keys = sorted(set(data1.keys()) | set(data2.keys()))
     diff = {}
@@ -35,8 +37,8 @@ def main():
                         metavar='FORMAT')
     args = parser.parse_args() 
 
-
-    file1_data, file2_data = parse_files(PATH_FOLD + args.first_file, PATH_FOLD + args.second_file)
+    file1_data, file2_data = parse_files(PATH_FOLD + args.first_file, 
+                                         PATH_FOLD + args.second_file)
     diff = generate_diff(file1_data, file2_data)
     return diff
 
