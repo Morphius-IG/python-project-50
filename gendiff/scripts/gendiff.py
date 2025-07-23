@@ -1,47 +1,32 @@
-import argparse
-
-from gendiff.scripts.parser import parse_files
-
-PATH_FOLD = 'gendiff/files/'
-
-
-def generate_diff(data1, data2):
-    keys = sorted(set(data1.keys()) | set(data2.keys()))
+def generate_diff(file1, file2):
+    merged_keys = sorted({*file1.keys(), *file2.keys()})
     diff = {}
-    
-    for key in keys:
-        if key not in data1:
-            diff[f"+ {key}"] = data2[key]
-        elif key not in data2:
-            diff[f"- {key}"] = data1[key]
-        elif data1[key] != data2[key]:
-            diff[f"- {key}"] = data1[key]
-            diff[f"+ {key}"] = data2[key]
+    for key in merged_keys:
+        if (
+            key in file2
+            and key in file1
+            and isinstance(file1[key], dict)
+            and isinstance(file2[key], dict)
+        ):
+            diff[key] = {'status': 'parent', 
+                         'value': generate_diff(file1[key], file2[key])}
         else:
-            diff[key] = data1[key]
-    lines = []
-    for key, value in diff.items():
-        lines.append(f"{key}: {value}")
-    return '\n'.join(lines)
-    
-
-def main():
-    parser = argparse.ArgumentParser(
-    prog='gendiff',
-    usage='gendiff [-h] [-f FORMAT] first_file second_file',
-    description='''Compares two configuration files and shows a difference.''')
-    parser.add_argument('first_file')
-    parser.add_argument('second_file')
-    parser.add_argument('-f', '--format', 
-                        help='set format of output', 
-                        metavar='FORMAT')
-    args = parser.parse_args() 
-
-    file1_data, file2_data = parse_files(PATH_FOLD + args.first_file, 
-                                         PATH_FOLD + args.second_file)
-    diff = generate_diff(file1_data, file2_data)
+            # Если текущего ключа нету в изначальном варианте
+            if key not in file1: 
+                # значит его добавили
+                diff[key] = {'status': 'added', 'value': file2[key]}
+                # Если текущего ключа нету в конечном варианте 
+            elif key not in file2:
+                # значит его удалили
+                diff[key] = {'status': 'deleted', 'value': file1[key]}
+                # Если значения ключей отличаются  
+            elif file1[key] != file2[key]:  
+                
+                diff[key] = {'status': 'changed', 
+                             'old': file1[key], 
+                             'new': file2[key]}
+            elif file1[key] == file2[key]:
+                diff[key] = {'status': 'not changed', 
+                             'value': file1[key]}               
     return diff
-
-
-if __name__ == "__main__":
-    main()
+    
