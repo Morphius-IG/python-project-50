@@ -1,5 +1,9 @@
 def to_stylish(data, replacer=' ', spacesCount=4, depth=1):
     if not isinstance(data, dict):
+        if isinstance(data, bool):
+            return str(data).lower()  # True -> 'true', False -> 'false'
+        elif data is None:
+            return 'null'
         return str(data)
         
     inner_indent = replacer * spacesCount
@@ -45,7 +49,7 @@ def to_stylish(data, replacer=' ', spacesCount=4, depth=1):
             new_data.append(
               f'{inner_indent}{str(key)}: {str(to_stylish(value, 
               replacer, spacesCount, depth + 1))}')
-
+    
     if depth == 0:
         return "{\n" + "\n".join(new_data) + "\n}"
     else:
