@@ -27,7 +27,7 @@ jobs:
       - name: SonarQubeScan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
-          SONAR_TOKEN: ${{ d70cfdbc426d1c8e6bd5a1f7c0060452c4ebf78c }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
             -Dsonar.projectKey=Morphius-IG_python-project-50
