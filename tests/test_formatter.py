@@ -1,7 +1,7 @@
 from gendiff.scripts.formatter import to_stylish
 from gendiff.scripts.gendiff import generate_diff
 import json
-import yaml
+
 
 def test_to_stylish():
   file1 = (json.load(open('gendiff/files//tree1.json')))
