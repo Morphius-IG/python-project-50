@@ -32,4 +32,4 @@ jobs:
           args: >
             -Dsonar.projectKey=Morphius-IG_python-project-50
             -Dsonar.organization=morphius-ig
-            -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.python.coverage.reportPaths=./coverage.xml
