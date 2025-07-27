@@ -15,4 +15,4 @@ lint_fix: # Исправление ошибок линтером
 test: # Расчет покрытия тестами
 	uv run pytest	
 test-coverage: # Расчет покрытия тестами
-	.venv/bin/pytest --cov=gendiff
+	.venv/bin/pytest --cov --cov-report=xml
