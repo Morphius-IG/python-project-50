@@ -1,10 +1,6 @@
 def to_stylish(data, replacer=' ', spacesCount=4, depth=1):
     if not isinstance(data, dict):
-        if isinstance(data, bool):
-            return str(data).lower()  # True -> 'true', False -> 'false'
-        elif data is None:
-            return 'null' # None -> 'null'
-        return str(data)
+        format_bool_none(data)
 
     inner_indent = replacer * spacesCount
     new_data = []
@@ -60,3 +56,12 @@ def to_stylish(data, replacer=' ', spacesCount=4, depth=1):
             + replacer * (spacesCount * depth - 4) 
             + "}"
         )
+
+
+def format_bool_none(value):
+    if isinstance(value, bool):
+        return str(value).lower()  # True -> 'true', False -> 'false'
+    elif value is None:
+        return 'null'  # None -> 'null'
+    else:
+        return str(value)

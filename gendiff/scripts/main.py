@@ -1,7 +1,7 @@
 import argparse
 
-from gendiff.scripts.formatters.stylish import to_stylish
 from gendiff.scripts.formatters.plain import to_plain
+from gendiff.scripts.formatters.stylish import to_stylish
 from gendiff.scripts.gendiff import generate_diff
 from gendiff.scripts.parser import parse_files
 
@@ -27,13 +27,11 @@ def main():
     output_format = args.format
     diff = generate_diff(file1_data, file2_data)
     if output_format == 'stylish':
-      return to_stylish(diff)
+        return to_stylish(diff)
     
     elif output_format == 'plain':
-      return to_plain(diff)
+        return to_plain(diff)
     
-    
-
 
 if __name__ == "__main__":
     main()
