@@ -8,7 +8,7 @@ def generate_diff(file1, file2):
             and isinstance(file1[key], dict)
             and isinstance(file2[key], dict)
         ):
-            diff[key] = {'status': 'parent', 
+            diff[key] = {'status': 'nested', 
                          'value': generate_diff(file1[key], file2[key])}
         else:
             # Если текущего ключа нету в изначальном варианте

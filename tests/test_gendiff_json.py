@@ -37,7 +37,7 @@ def test_generate_diff_nested_json():
     
     expected = {
         'common': {
-            'status': 'parent',
+            'status': 'nested',
             'value': {
                 'setting1': {'status': 'not changed', 'value': 'Value 1'},
                 'setting2': {'status': 'deleted', 'value': 200},

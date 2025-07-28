@@ -1,12 +1,16 @@
 def to_stylish(data, replacer=' ', spacesCount=4, depth=1):
     if not isinstance(data, dict):
-        return modify_bool(data)
+        if isinstance(data, bool):
+            return str(data).lower()  # True -> 'true', False -> 'false'
+        elif data is None:
+            return 'null' # None -> 'null'
+        return str(data)
 
     inner_indent = replacer * spacesCount
     new_data = []
     for key, value in data.items():
         if isinstance(value, dict) and 'status' in value:
-            if value['status'] == 'parent':
+            if value['status'] == 'nested':
                 inner_indent = (replacer * spacesCount * depth)
                 new_data.append(
                   f"{inner_indent}{str(key)}: {str(to_stylish(value['value'], 
@@ -56,11 +60,3 @@ def to_stylish(data, replacer=' ', spacesCount=4, depth=1):
             + replacer * (spacesCount * depth - 4) 
             + "}"
         )
-
-
-def modify_bool(data):
-    if isinstance(data, bool):
-        return str(data).lower()  # True -> 'true', False -> 'false'
-    elif data is None:
-        return 'null'
-    return str(data)
