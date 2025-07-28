@@ -1,6 +1,6 @@
 def to_stylish(data, replacer=' ', spacesCount=4, depth=1):
     if not isinstance(data, dict):
-        format_bool_none(data)
+        return format_bool_none(data)
 
     inner_indent = replacer * spacesCount
     new_data = []

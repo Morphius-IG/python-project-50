@@ -18,8 +18,8 @@ def to_plain(data, parent_key=''):
                 new_data.append(f"Property '{current_key}' was removed")
 
             elif value['status'] == 'changed':
-                val_new, val_old = format_value((value['new'])), 
-                format_value((value['old']))
+                val_new = format_value((value['new']))
+                val_old = format_value((value['old']))
                 new_data.append(
                   f"Property '{current_key}' was updated. "
                   f"From {val_old} to {val_new}"
