@@ -1,6 +1,6 @@
 import json
 import yaml
-from gendiff.scripts.gendiff import generate_diff
+from gendiff.gendiff import generate_diff
 
 def test_generate_diff_flat_json():
     file1 = {"a": 1, "b": 2, "c": 3}

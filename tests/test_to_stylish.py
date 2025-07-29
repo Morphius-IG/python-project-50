@@ -1,5 +1,5 @@
 from gendiff.scripts.formatters.stylish import to_stylish
-from gendiff.scripts.gendiff import generate_diff
+from gendiff.gendiff import generate_diff
 import json
 
 

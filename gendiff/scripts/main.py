@@ -3,7 +3,7 @@ import argparse
 from gendiff.scripts.formatters.json import to_json
 from gendiff.scripts.formatters.plain import to_plain
 from gendiff.scripts.formatters.stylish import to_stylish
-from gendiff.scripts.gendiff import generate_diff
+from gendiff.gendiff import generate_diff
 from gendiff.scripts.parser import parse_files
 
 PATH_FOLD = 'gendiff/files/'
