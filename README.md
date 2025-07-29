@@ -40,5 +40,5 @@ make lint
 <a href="https://asciinema.org/a/UUc37fgOHiGdhrfXSNwQlncqW" target="_blank"><img src="https://asciinema.org/a/UUc37fgOHiGdhrfXSNwQlncqW.svg" /></a>
 2. plain (text mode)
 <a href="https://asciinema.org/a/qWl9BI10tpgmJUV3TyO94nyx3" target="_blank"><img src="https://asciinema.org/a/qWl9BI10tpgmJUV3TyO94nyx3.svg" /></a>
-3. stylish (JSON format)
+3. json (JSON format)
 <a href="https://asciinema.org/a/CTzE6KH5NThTEjS8xSxBGoMdO" target="_blank"><img src="https://asciinema.org/a/CTzE6KH5NThTEjS8xSxBGoMdO.svg" /></a>
