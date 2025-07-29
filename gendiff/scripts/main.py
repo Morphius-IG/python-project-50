@@ -1,13 +1,16 @@
 import argparse
+import os
 
 from gendiff.gendiff import generate_diff
 from gendiff.scripts.formatters.json import to_json
 from gendiff.scripts.formatters.plain import to_plain
 from gendiff.scripts.formatters.stylish import to_stylish
-from gendiff.scripts.parser import parse_files
 
-PATH_FOLD = 'gendiff/files/'
-   
+
+def get_full_path(filename):
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_dir, 'files', filename)
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -23,10 +26,12 @@ def main():
                         metavar='FORMAT')
     args = parser.parse_args() 
 
-    file1_data, file2_data = parse_files(PATH_FOLD + args.first_file, 
-                                         PATH_FOLD + args.second_file)
+    file_path1 = get_full_path(args.first_file)
+    file_path2 = get_full_path(args.second_file)
     output_format = args.format
-    diff = generate_diff(file1_data, file2_data)
+
+    diff = generate_diff(file_path1, file_path2)
+
     if output_format == 'stylish':
         return to_stylish(diff)
     
