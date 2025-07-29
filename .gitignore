@@ -1,0 +1,48 @@
+*# Файлы Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+.pytest_cache/
+.ruff_cache/
+.activate/
+dist/
+*.python-version
+*.pyc
+.coverage
+coverage.xml
+*_cache/
+demo.cast
+# Логи и временные файлы
+*.log
+*.tmp
+*.bak
+
+# Виртуальное окружение
+venv/
+env/
+.venv
+.venv_linux/
+
+# IDE и редакторы
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Файлы данных и кэша
+*.db
+*.sqlite
+*.cache
+
+# Файлы сборки и дистрибуции
+build/
+dist/
+*.egg-info/
+
+
+
+
+
+
+
