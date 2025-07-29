@@ -22,7 +22,8 @@ make install
 | gendiff -f[--format] json file1.json file2.yml                         | "Show difference in JSON format"      |
 ```bash
 gendiff -f stylish file1.json file2.yml
-
+gendiff --format plain file1.yml file2.json
+gendiff --format json file1.yml file2.yml
 ```
 
 ### Run tests
