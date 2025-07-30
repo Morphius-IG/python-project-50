@@ -1,18 +1,18 @@
 import yaml
 from gendiff.makediff import make_diff
 
+
 def test_make_diff_flat_json():
     file1 = {"a": 1, "b": 2, "c": 3}
     file2 = {"a": 1, "b": 20, "d": 4}
-    
     expected = {
         'a': {'status': 'not changed', 'value': 1},
         'b': {'status': 'changed', 'old': 2, 'new': 20},
         'c': {'status': 'deleted', 'value': 3},
         'd': {'status': 'added', 'value': 4},
     }
-    
     assert make_diff(file1, file2) == expected
+
 
 def test_make_diff_nested_json():
     file1 = {
@@ -33,7 +33,6 @@ def test_make_diff_nested_json():
             "abc": 12345,
         }
     }
-    
     expected = {
         'common': {
             'status': 'nested',
@@ -52,7 +51,6 @@ def test_make_diff_nested_json():
             'value': {'abc': 12345},
         }
     }
-    
     assert make_diff(file1, file2) == expected
 
 
@@ -67,12 +65,10 @@ def test_make_diff_flat_yaml():
         b: 20
         d: 4
     """)
-    
     expected = {
         'a': {'status': 'not changed', 'value': 1},
         'b': {'status': 'changed', 'old': 2, 'new': 20},
         'c': {'status': 'deleted', 'value': 3},
         'd': {'status': 'added', 'value': 4},
     }
-    
     assert make_diff(file1, file2) == expected
