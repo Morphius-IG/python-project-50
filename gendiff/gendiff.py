@@ -1,7 +1,7 @@
-from gendiff.scripts.parser import parse_files
 from gendiff.scripts.formatters.json import to_json
 from gendiff.scripts.formatters.plain import to_plain
 from gendiff.scripts.formatters.stylish import to_stylish
+from gendiff.scripts.parser import parse_files
 
 from .makediff import make_diff
 

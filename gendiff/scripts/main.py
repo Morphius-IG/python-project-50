@@ -2,7 +2,8 @@ import argparse
 import os
 
 from gendiff.gendiff import generate_diff
-#from gendiff.scripts.parser import parse_files
+
+# from gendiff.scripts.parser import parse_files
 
 
 def get_full_path(filename):
