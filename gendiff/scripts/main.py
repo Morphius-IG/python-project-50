@@ -3,10 +3,6 @@ import sys
 
 from gendiff.gendiff import generate_diff
 
-# def get_full_path(filename):
-#    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-#    return os.path.join(base_dir, 'files', filename)
-
 
 def main():
     parser = argparse.ArgumentParser(
