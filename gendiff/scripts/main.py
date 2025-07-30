@@ -30,7 +30,7 @@ def main():
     output_format = args.format
 #    file1, file2 = parse_files(file_path1, file_path2)
 
-    return generate_diff(file_path1, file_path2, output_format)
+    print(generate_diff(file_path1, file_path2, output_format))
 
 
 if __name__ == "__main__":
