@@ -1,3 +1,4 @@
+from gendiff.scripts.parser import parse_files
 from gendiff.scripts.formatters.json import to_json
 from gendiff.scripts.formatters.plain import to_plain
 from gendiff.scripts.formatters.stylish import to_stylish
@@ -5,7 +6,9 @@ from gendiff.scripts.formatters.stylish import to_stylish
 from .makediff import make_diff
 
 
-def generate_diff(file1, file2, format='stylish'):
+def generate_diff(file_path1, file_path2, format='stylish'):
+    file1, file2 = parse_files(file_path1, file_path2)
+    
     diff = make_diff(file1, file2)
     if format == 'stylish':
         return to_stylish(diff)

@@ -2,7 +2,7 @@ import argparse
 import os
 
 from gendiff.gendiff import generate_diff
-from gendiff.scripts.parser import parse_files
+#from gendiff.scripts.parser import parse_files
 
 
 def get_full_path(filename):
@@ -27,9 +27,9 @@ def main():
     file_path1 = get_full_path(args.first_file)
     file_path2 = get_full_path(args.second_file)
     output_format = args.format
-    file1, file2 = parse_files(file_path1, file_path2)
+#    file1, file2 = parse_files(file_path1, file_path2)
 
-    return generate_diff(file1, file2, output_format)
+    return generate_diff(file_path1, file_path2, output_format)
 
 
 if __name__ == "__main__":
