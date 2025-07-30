@@ -1,5 +1,6 @@
 from gendiff.scripts.formatters.plain import to_plain
 
+
 def test_added_simple_value():
     data = {"key": {"status": "added", "value": "first"}}
     expected = "Property 'key' was added with value: 'first'"

@@ -1,5 +1,5 @@
 from gendiff.scripts.formatters.stylish import to_stylish
-from gendiff.gendiff import generate_diff
+
 
 def test_simple_added():
     data = {"key": {"status": "added", "value": "value"}}

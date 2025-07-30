@@ -1,4 +1,3 @@
-import json
 import yaml
 from gendiff.makediff import make_diff
 
