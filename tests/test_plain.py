@@ -1,4 +1,4 @@
-from gendiff.scripts.formatters.plain import to_plain
+from gendiff.formatters.plain import to_plain
 
 
 def test_added_simple_value():

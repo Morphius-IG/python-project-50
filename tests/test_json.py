@@ -1,4 +1,4 @@
-from gendiff.scripts.formatters.json import to_json
+from gendiff.formatters.json import to_json
 
 
 def test_simple_added():

@@ -1,4 +1,4 @@
-from gendiff.scripts.formatters.stylish import to_stylish
+from gendiff.formatters.stylish import to_stylish
 
 
 def test_simple_added():
