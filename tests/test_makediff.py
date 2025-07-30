@@ -1,8 +1,8 @@
 import json
 import yaml
-from gendiff.gendiff import generate_diff
+from gendiff.makediff import make_diff
 
-def test_generate_diff_flat_json():
+def test_make_diff_flat_json():
     file1 = {"a": 1, "b": 2, "c": 3}
     file2 = {"a": 1, "b": 20, "d": 4}
     
@@ -13,9 +13,9 @@ def test_generate_diff_flat_json():
         'd': {'status': 'added', 'value': 4},
     }
     
-    assert generate_diff(file1, file2) == expected
+    assert make_diff(file1, file2) == expected
 
-def test_generate_diff_nested_json():
+def test_make_diff_nested_json():
     file1 = {
         "common": {
             "setting1": "Value 1",
@@ -54,12 +54,10 @@ def test_generate_diff_nested_json():
         }
     }
     
-    assert generate_diff(file1, file2) == expected
+    assert make_diff(file1, file2) == expected
 
 
-
-
-def test_generate_diff_flat_yaml():
+def test_make_diff_flat_yaml():
     file1 = yaml.safe_load("""
         a: 1
         b: 2
@@ -78,4 +76,4 @@ def test_generate_diff_flat_yaml():
         'd': {'status': 'added', 'value': 4},
     }
     
-    assert generate_diff(file1, file2) == expected
+    assert make_diff(file1, file2) == expected
