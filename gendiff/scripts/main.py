@@ -1,14 +1,13 @@
+import sys
 import argparse
 import os
 
 from gendiff.gendiff import generate_diff
 
-# from gendiff.scripts.parser import parse_files
 
-
-def get_full_path(filename):
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    return os.path.join(base_dir, 'files', filename)
+#def get_full_path(filename):
+#    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#    return os.path.join(base_dir, 'files', filename)
 
 
 def main():
@@ -23,15 +22,28 @@ def main():
                         default='stylish',
                         help='set format of output', 
                         metavar='FORMAT')
-    args = parser.parse_args() 
+    try:
+        args = parser.parse_args() 
+        file_path1 = args.first_file
+        file_path2 = args.second_file
+        output_format = args.format
 
-    file_path1 = get_full_path(args.first_file)
-    file_path2 = get_full_path(args.second_file)
-    output_format = args.format
-#    file1, file2 = parse_files(file_path1, file_path2)
+        result = generate_diff(file_path1, file_path2, output_format)
+        print(result)
+        sys.exit(0)
 
-    print(generate_diff(file_path1, file_path2, output_format))
-
+    except FileNotFoundError as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
+        
+    except ValueError as e:
+        print(f"Error: Invalid file format - {e}", file=sys.stderr)
+        sys.exit(1)
+        
+    except Exception as e:
+        print(f"Unexpected error: {e}", file=sys.stderr)
+        sys.exit(1)
+        
 
 if __name__ == "__main__":
     main()
